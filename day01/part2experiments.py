@@ -34,6 +34,19 @@ def optimized_lookup(data):
     return None, None, None, None
 
 
+def optimized_dict_lookup(data):
+    lookup = {}.fromkeys(data)
+    asc = sorted(data)
+    for a in asc:
+        for b in asc:
+            c = 2020 - a - b
+            if c <= 0:
+                continue
+            if c in lookup:
+                return a, b, c, a * b * c
+    return None, None, None, None
+
+
 if __name__ == "__main__":
     with open("input.txt") as f:
         data = [int(l) for l in f.readlines() if l.strip(string.whitespace)]
@@ -45,4 +58,7 @@ if __name__ == "__main__":
     print(f"a: {a}, b: {b}, c: {c}, a*b*c: {abc}")
 
     a, b, c, abc = timefunc(100, optimized_lookup, data)
+    print(f"a: {a}, b: {b}, c: {c}, a*b*c: {abc}")
+
+    a, b, c, abc = timefunc(100, optimized_dict_lookup, data)
     print(f"a: {a}, b: {b}, c: {c}, a*b*c: {abc}")

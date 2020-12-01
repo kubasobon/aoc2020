@@ -54,12 +54,14 @@ In your expense report, what is the product of the three entries that sum to
 # Results
 ```
 ~ python part1experiments.py
-Ran unoptimized 1000 times: average time was 0.00126s
-Ran optimized_nested 1000 times: average time was 0.00015s
+Ran unoptimized 1000 times: average time was 0.00118s
+Ran optimized_nested 1000 times: average time was 0.00017s
 Ran optimized_lookup 1000 times: average time was 0.00004s
+Ran optimized_dict_lookup 1000 times: average time was 0.00002s
 
 ~ python part2experiments.py
-Ran unoptimized 100 times: average time was 0.12888s
-Ran optimized_nested 100 times: average time was 0.00732s
-Ran optimized_lookup 100 times: average time was 0.00074s
+Ran unoptimized 100 times: average time was 0.13673s
+Ran optimized_nested 100 times: average time was 0.00741s
+Ran optimized_lookup 100 times: average time was 0.00075s
+Ran optimized_dict_lookup 100 times: average time was 0.00006s
 ```

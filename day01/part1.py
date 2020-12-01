@@ -6,8 +6,12 @@ with open("input.txt") as f:
 
 for a in sorted(data):
     for b in sorted(data, reverse=True):
-        if a + b == 2020:
-            print(f"a: {a}, b: {b}, a*b: {a*b}")
-            sys.exit()
+        result = a + b
+        if result > 2020:
+            continue
+        elif result < 2020:
+            break
+        print(f"a: {a}, b: {b}, a*b: {a*b}")
+        sys.exit()
 
 print("Condition has not been met")

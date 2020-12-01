@@ -1,4 +1,5 @@
---- Day 1: Report Repair ---
+# Task
+## --- Day 1: Report Repair ---
 After saving Christmas five years in a row, you've decided to take a vacation
 at a nice resort on a tropical island. Surely, Christmas will go on without
 you.
@@ -38,7 +39,7 @@ them together produces `1721 * 299 = 514579`, so the correct answer is `514579`.
 Of course, your expense report is much larger. Find the two entries that sum to
 `2020`; what do you get if you multiply them together?
 
---- Part Two ---
+## --- Part Two ---
 The Elves in accounting are thankful for your help; one of them even offers you
 a starfish coin they had left over from a past vacation. They offer you a
 second one if you can find three numbers in your expense report that meet the
@@ -50,4 +51,15 @@ and `675`. Multiplying them together produces the answer, `241861950`.
 In your expense report, what is the product of the three entries that sum to
 `2020`?
 
+# Results
+```
+~ python part1experiments.py
+Ran unoptimized 1000 times: average time was 0.00126s
+Ran optimized_nested 1000 times: average time was 0.00015s
+Ran optimized_lookup 1000 times: average time was 0.00004s
 
+~ python part2experiments.py
+Ran unoptimized 100 times: average time was 0.12888s
+Ran optimized_nested 100 times: average time was 0.00732s
+Ran optimized_lookup 100 times: average time was 0.00074s
+```

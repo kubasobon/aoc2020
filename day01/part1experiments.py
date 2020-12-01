@@ -1,5 +1,6 @@
 import string
-import time
+
+from timer import timefunc
 
 
 def unoptimized(data):
@@ -22,23 +23,12 @@ def optimized(data):
     return None, None, None
 
 
-def timeit(iterations, func, *args, **kwargs):
-    avg = 0.0
-    for _ in range(iterations):
-        start = time.time_ns()
-        result = func(*args, **kwargs)
-        avg += float(time.time_ns() - start)
-    avg = (avg / iterations) / 1000000000
-    print(f"Ran {func.__name__} {iterations} times: average time was {avg:.5f}s")
-    return result
-
-
 if __name__ == "__main__":
     with open("input.txt") as f:
         data = [int(l) for l in f.readlines() if l.strip(string.whitespace)]
 
-    a, b, ab = timeit(1000, unoptimized, data)
+    a, b, ab = timefunc(1000, unoptimized, data)
     print(f"a: {a}, b: {b}, a*b: {a*b}")
 
-    a, b, ab = timeit(1000, optimized, data)
+    a, b, ab = timefunc(1000, optimized, data)
     print(f"a: {a}, b: {b}, a*b: {a*b}")

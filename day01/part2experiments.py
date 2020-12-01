@@ -5,21 +5,20 @@ import time
 def unoptimized(data):
     for a in data:
         for b in data:
-            if a + b == 2020:
-                return a, b, a * b
-    return None, None, None
+            for c in data:
+                if a + b + c == 2020:
+                    return a, b, c, a*b*c
+    return None, None, None, None
 
 
 def optimized(data):
-    for a in sorted(data):
-        for b in sorted(data, reverse=True):
-            result = a + b
-            if result > 2020:
-                continue
-            elif result < 2020:
-                break
-            return a, b, a * b
-    return None, None, None
+    asc = sorted(data)
+    for a in asc:
+        for b in asc:
+            for c in asc:
+                if a + b + c == 2020:
+                    return a, b, c, a*b*c
+    return None, None, None, None
 
 
 def timeit(iterations, func, *args, **kwargs):
@@ -37,8 +36,8 @@ if __name__ == "__main__":
     with open("input.txt") as f:
         data = [int(l) for l in f.readlines() if l.strip(string.whitespace)]
 
-    a, b, ab = timeit(1000, unoptimized, data)
-    print(f"a: {a}, b: {b}, a*b: {a*b}")
+    a, b, c, abc = timeit(100, unoptimized, data)
+    print(f"a: {a}, b: {b}, c: {c}, a*b*c: {abc}")
 
-    a, b, ab = timeit(1000, optimized, data)
-    print(f"a: {a}, b: {b}, a*b: {a*b}")
+    a, b, c, abc = timeit(100, optimized, data)
+    print(f"a: {a}, b: {b}, c: {c}, a*b*c: {abc}")

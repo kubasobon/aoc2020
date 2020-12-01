@@ -46,4 +46,3 @@ if __name__ == "__main__":
 
     a, b, c, abc = timefunc(100, optimized_lookup, data)
     print(f"a: {a}, b: {b}, c: {c}, a*b*c: {abc}")
-

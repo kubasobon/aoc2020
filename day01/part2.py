@@ -5,7 +5,6 @@ with open("input.txt") as f:
     data = [int(l) for l in f.readlines() if l.strip(string.whitespace)]
 
 asc = sorted(data)
-asc = sorted(data)
 for a in asc:
     for b in asc:
         c = 2020 - a - b

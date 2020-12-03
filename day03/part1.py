@@ -24,7 +24,6 @@ class Map:
         assert isinstance(xy, tuple)
         x, y = xy
         x = x % self._width
-        y = y % self._height
         return (x, y)
 
     def __getitem__(self, k):

@@ -17,7 +17,7 @@ class Map:
                 if col == "#":
                     self._map[(x, y)] = True
 
-        self._height = len(data) - 1
+        self._height = len(data)
         self._width = len(data[0]) - 1
 
     def _normalized_coords(self, xy):
@@ -51,14 +51,16 @@ if __name__ == "__main__":
     subtotals = []
 
     for step in [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]:
-        x, y = 0, 0
         step_x, step_y = step
+        x = step_x
+        y = step_y
+
         trees_hit = 0
         while y <= h:
-            x += step_x
-            y += step_y
             if (x, y) in m:
                 trees_hit += 1
+            x += step_x
+            y += step_y
         subtotals.append(trees_hit)
 
     result = 1

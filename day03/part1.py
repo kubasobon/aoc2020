@@ -48,12 +48,15 @@ if __name__ == "__main__":
     m = Map(data)
     w, h = m.bounds()
 
-    x, y = 0, 0
+    step_x, step_y = 3, 1
+    x = step_x
+    y = step_y
+
     trees_hit = 0
     while y <= h:
-        x += 3
-        y += 1
         if (x, y) in m:
             trees_hit += 1
+        x += step_x
+        y += step_y
 
     print(f"Hit {trees_hit} trees")

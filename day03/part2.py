@@ -42,7 +42,7 @@ class Map:
 
 
 if __name__ == "__main__":
-    with open("test_input.txt") as f:
+    with open("input.txt") as f:
         data = [l for l in f.readlines() if l.strip(string.whitespace)]
 
     m = Map(data)

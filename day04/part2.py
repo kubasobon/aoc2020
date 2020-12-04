@@ -71,5 +71,7 @@ for line in data:
         prefix, data = element.split(":")
         fields[prefix] = data
 
+if validate(fields):
+    valid_passports += 1
 
 print(f"Valid passports: {valid_passports}")

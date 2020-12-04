@@ -22,11 +22,10 @@ import string
 #             setattr(self, prefix, data)
 
 
-
 with open("input.txt") as f:
     data = (l.strip(string.whitespace) for l in f.readlines())
 
-required_fields = ("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid") #, "cid")
+required_fields = ("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")  # , "cid")
 
 fields = []
 valid_passports = 0
@@ -43,7 +42,7 @@ for line in data:
         prefix, data = element.split(":")
         fields.append(prefix)
 
-if len(fields) > 0 :
+if len(fields) > 0:
     if all(rf in fields for rf in required_fields):
         valid_passports += 1
 

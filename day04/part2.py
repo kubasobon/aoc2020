@@ -8,11 +8,11 @@ def validate(fields):
     if any(rf not in fields for rf in required_fields):
         return False
 
-    byr = int(byr)
+    byr = int(fields["byr"])
     if byr < 1920 or byr > 2002:
         return False
 
-    iyr = int(iyr)
+    iyr = int(fields["iyr"])
     if iyr < 2010 or iyr > 2020:
         return False
 

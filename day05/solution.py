@@ -45,8 +45,9 @@ if __name__ == "__main__":
     with open("input.txt") as f:
         data = [l.strip(string.whitespace) for l in f.readlines()]
 
-    max_id = 0
-    for bp in data:
-        max_id = max(max_id, seat_id(bp))
-
+    seat_ids = [seat_id(bp) for bp in data]
+    max_id = max(seat_ids)
     print(f"Highest sit ID: {max_id}")
+
+    empty_seats = [s for s in range(max_id) if s not in seat_ids]
+    print(f"Empty seat ids: {', '.join(empty_seats)}")

@@ -49,5 +49,5 @@ if __name__ == "__main__":
     max_id = max(seat_ids)
     print(f"Highest sit ID: {max_id}")
 
-    empty_seats = [s for s in range(max_id) if s not in seat_ids]
-    print(f"Empty seat ids: {', '.join(empty_seats)}")
+    empty_seats = ", ".join([str(s) for s in range(max_id) if s not in seat_ids])
+    print(f"Empty seat ids: {empty_seats}")

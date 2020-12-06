@@ -12,8 +12,7 @@ group_size = 0
 for l in data:
     if l == "":
         c = Counter(group_answers)
-        sub_total = sum(1 for v in c.values() if v == group_size)
-        total += sub_total
+        total += sum(1 for v in c.values() if v == group_size)
         group_answers = ""
         group_size = 0
         continue

@@ -47,5 +47,3 @@ bag colors that can eventually contain at least one shiny gold bag is 4.
 ```
 How many bag colors can eventually contain at least one shiny gold bag? (The
 list of rules is quite long; make sure you get all of it.)
-
-

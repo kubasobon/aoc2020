@@ -50,10 +50,7 @@ for change_pc in range(len(bootcode) - 1, -1, -1):
         if opcode == "acc":
             acc += arg
             pc += 1
-            continue
-        if opcode == "jmp":
+        elif opcode == "jmp":
             pc += arg
-            continue
-        if opcode == "nop":
+        elif opcode == "nop":
             pc += 1
-            continue

@@ -5,7 +5,7 @@ with open("input.txt") as f:
     data = [int(i) for i in f.readlines()]
 
 
-key = 127
+key = 31161678
 for start in range(len(data)):
     pos = start
     total = 0

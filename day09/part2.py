@@ -13,7 +13,7 @@ for start in range(len(data)):
         total += data[pos]
         if total == key:
             print(f"Found contiguous range: {start}:{pos+1}")
-            numbers = data[start:pos+1]
+            numbers = data[start : pos + 1]
             assert sum(numbers) == key
             low = min(numbers)
             high = max(numbers)

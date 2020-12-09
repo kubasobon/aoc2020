@@ -18,7 +18,7 @@ while pos < len(data):
         if n2 in numbers:
             break
     else:
-        print(f"Could not factor {key}")
+        print(f"Could not factor key: {key} at position: {pos}")
         break
 
     pos += 1

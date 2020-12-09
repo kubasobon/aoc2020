@@ -7,7 +7,7 @@ pos = preamble_len
 results = {}
 
 while pos < len(data):
-    numbers = {}.fromkeys(data[pos-preamble_len:pos])
+    numbers = {}.fromkeys(data[pos - preamble_len : pos])
     key = data[pos]
 
     match = False

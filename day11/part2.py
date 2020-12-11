@@ -5,10 +5,16 @@ with open("input.txt") as f:
     data = [l.strip(string.whitespace) for l in f.readlines()]
 
 directions = (
-    (-1, -1), (0, -1), (1, -1),
-    (-1, 0), (1, 0),
-    (-1, 1), (0, 1), (1, 1),
+    (-1, -1),
+    (0, -1),
+    (1, -1),
+    (-1, 0),
+    (1, 0),
+    (-1, 1),
+    (0, 1),
+    (1, 1),
 )
+
 
 def trace(state, x, y, dx, dy, max_x, max_y):
     while True:
@@ -53,25 +59,13 @@ def next_state(state):
         future.append("".join(frow))
     return future
 
+
 def flattened(state):
     return "".join(state)
 
+
 with open("input.txt") as f:
     state = [l.strip(string.whitespace) for l in f.readlines()]
-
-
-state = [
-    "L.LL.LL.LL",
-    "LLLLLLL.LL",
-    "L.L.L..L..",
-    "LLLL.LL.LL",
-    "L.LL.LL.LL",
-    "L.LLLLL.LL",
-    "..L.L.....",
-    "LLLLLLLLLL",
-    "L.LLLLLL.L",
-    "L.LLLLL.LL",
-]
 
 
 prev_state = []
@@ -85,6 +79,3 @@ while prev_state != flattened(state):
 print(f"Stable after {iterations} iterations")
 seats_occupied = sum(l.count("#") for l in state)
 print(f"Occupied seats: {seats_occupied}")
-
-
-

@@ -32,6 +32,19 @@ def future_state(state, row_len):
 with open("input.txt") as f:
     data = [l.strip(string.whitespace) for l in f.readlines()]
 
+data = [
+"#.LL.L#.##",
+"#LLLLLL.L#",
+"L.L.L..L..",
+"#LLL.LL.L#",
+"#.LL.LL.LL",
+"#.LLLL#.##",
+"..L.L.....",
+"#LLLLLLLL#",
+"#.LLLLLL.L",
+"#.#LLLL.##",
+]
+
 row_len = len(data[0])
 state = "".join(data)
 prev_state = ""
@@ -39,8 +52,14 @@ iterations = 0
 
 while prev_state != state:
     prev_state = state
+    for i, ch in enumerate(state):
+        if i % row_len == 0 and i > 0:
+            print("")
+        print(ch, end="")
+    print("\n---")
     state = future_state(state, row_len)
     iterations += 1
+    breakpoint()
 
 print(f"Stable after {iterations} iterations")
 seats_occupied = state.count("#")

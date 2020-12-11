@@ -1,63 +1,70 @@
 import string
 
 
-def future_state(state, row_len):
-    future = []
-    translations = (
-        -row_len - 1,
-        -row_len,
-        -row_len + 1,
-        -1,
-        1,
-        row_len - 1,
-        row_len,
-        row_len + 1,
-    )
-    for i, ch in enumerate(state):
-        if ch == ".":
-            future.append(ch)
-            continue
-
-        adjacent_occupied = 0
-        for tidx, t in enumerate(translations):
-            check = i + t
-            if check < 0 or check >= len(state):
-                continue  # total limits
-            if i % row_len == 0 and tidx in (0, 3, 5):
-                continue  # left
-            if i % row_len == row_len - 1 and tidx in (2, 4, 7):
-                continue  # right
-            if state[check] == "#":
-                adjacent_occupied += 1
-
-        if ch == "L" and adjacent_occupied == 0:
-            future.append("#")
-        elif ch == "#" and adjacent_occupied >= 4:
-            future.append("L")
-        else:
-            future.append(ch)
-
-    return "".join(future)
-
-
 with open("input.txt") as f:
     data = [l.strip(string.whitespace) for l in f.readlines()]
 
-row_len = len(data[0])
-state = "".join(data)
-prev_state = ""
+directions = (
+    (-1, -1), (0, -1), (1, -1),
+    (-1, 0), (1, 0),
+    (-1, 1), (0, 1), (1, 1),
+)
+
+def trace(state, x, y, dx, dy, max_x, max_y):
+    while True:
+        x += dx
+        y += dy
+        if x >= max_x or y >= max_y:
+            return False
+        if x <= 0 or y <= 0:
+            return False
+        if state[y][x] == "#":
+            return True
+
+
+def next_state(state):
+    rows = len(state)
+    cols = len(state[0])
+    future = []
+
+    for y, row in enumerate(state):
+        for x, ch in enumerate(row):
+            row = []
+            if ch == ".":
+                row.append(ch)
+                continue
+            taken = 0
+            for d in directions:
+                dx, dy = d
+                if trace(state, x, y, dx, dy, cols, rows):
+                    taken += 1
+
+            if ch == "#" and taken >= 5:
+                row.append("L")
+            elif ch == "L" and taken == 0:
+                row.append("#")
+            else:
+                row.append(ch)
+        future.append(row)
+    return future
+
+def flattened(state):
+    return "".join("".join(l) for l in state)
+
+with open("input.txt") as f:
+    state = [l.strip(string.whitespace) for l in f.readlines()]
+
+prev_state = []
 iterations = 0
 
-while prev_state != state:
+while flattened(prev_state) != flattened(state):
     prev_state = state
-    # for i, ch in enumerate(state):
-    #     if i % row_len == 0 and i > 0:
-    #         print("")
-    #     print(ch, end="")
-    # print("\n---")
-    state = future_state(state, row_len)
+    state = future_state(state)
     iterations += 1
 
 print(f"Stable after {iterations} iterations")
 seats_occupied = state.count("#")
 print(f"Occupied seats: {seats_occupied}")
+
+
+

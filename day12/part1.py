@@ -1,4 +1,6 @@
 import math
+import string
+
 
 class Ship:
     x = 0
@@ -60,12 +62,26 @@ class Ship:
         self.x += dx
         self.y += dy
 
+
 s = Ship()
-s.fwd(10)
-s.move_n(3)
-s.fwd(7)
-s.turn_r(90)
-s.fwd(11)
+funcmap = {
+    "N": s.move_n,
+    "S": s.move_s,
+    "E": s.move_e,
+    "W": s.move_w,
+    "F": s.fwd,
+    "R": s.turn_r,
+    "L": s.turn_l,
+}
+
+
+with open("input.txt") as f:
+    for line in (l.strip(string.whitespace) for l in f.readlines()):
+        cmd = line[0]
+        arg = int(line[1:])
+
+        funcmap[cmd](arg)
+
 
 print(f"x: {s.x}, y: {s.y}")
 manhattan = abs(s.x) + abs(s.y)

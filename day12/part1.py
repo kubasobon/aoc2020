@@ -61,35 +61,12 @@ class Ship:
         self.y += dy
 
 s = Ship()
-s.move_n(10)
-s.move_w(10)
-assert (s.x, s.y) == (-10, 10)
-s.move_s(12)
-s.move_e(11)
-assert (s.x, s.y) == (1, -2)
-s.move_n(2)
-assert (s.x, s.y) == (1, 0)
-s.fwd(1)
-assert (s.x, s.y) == (2, 0)
+s.fwd(10)
+s.move_n(3)
+s.fwd(7)
+s.turn_r(90)
+s.fwd(11)
 
-s.turn_l(90)
-s.fwd(2)
-assert (s.x, s.y) == (2, 2)
-
-s.turn_l(90)
-s.fwd(2)
-assert (s.x, s.y) == (0, 2)
-
-s.turn_l(90)
-s.fwd(2)
-assert (s.x, s.y) == (0, 0)
-
-s.turn_l(90)
-s.fwd(2)
-assert (s.x, s.y) == (2, 0)
-
-s.x = 0
-s.y = 0
-s.turn_l(45)
-s.fwd(2)
-print(f"{s.x}, {s.y}")
+print(f"x: {s.x}, y: {s.y}")
+manhattan = abs(s.x) + abs(s.y)
+print(f"Manhattan distance from zero: {manhattan}")

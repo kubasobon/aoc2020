@@ -25,8 +25,8 @@ class Ship:
         cos = math.cos(math.radians(da))
         wx = self.way_x * cos - self.way_y * sin
         wy = self.way_y * cos + self.way_x * sin
-        self.way_x = int(wx)
-        self.way_y = int(wy)
+        self.way_x = int(round(wx))
+        self.way_y = int(round(wy))
 
     def turn_r(self, da):
         self.turn_l(-da)
@@ -54,7 +54,7 @@ with open("input.txt") as f:
         arg = int(line[1:])
 
         funcmap[cmd](arg)
-        # print(f"{line}\tx: {s.x}, y: {s.y}, wx: {s.way_x}, wy: {s.way_y}")
+        print(f"{line}\tx: {s.x}, y: {s.y}, wx: {s.way_x}, wy: {s.way_y}")
 
 
 manhattan = abs(s.x) + abs(s.y)

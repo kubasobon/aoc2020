@@ -1,5 +1,6 @@
 import string
 
+
 def apply_mask(mask, dec):
     b = bin(dec)[2:].zfill(36)
     new_b = []

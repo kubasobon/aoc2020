@@ -6,7 +6,7 @@ conditions = {
     int(c): int(c) - (i % int(c)) if i > 0 else 0 for i, c in raw_conditions if c != "x"
 }
 
-conditions = {67: 0, 7: 6, 59: 57, 61: 58}
+# conditions = {67: 0, 7: 6, 59: 57, 61: 58}
 # conditions = {1789: 0, 37: 37 - 1, 47: 47 - 2, 1889: 1889 - 3}
 print(f"Conditions: {conditions}")
 

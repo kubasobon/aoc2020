@@ -1,11 +1,14 @@
 with open("input.txt") as f:
     f.readline()
-    conditions = {i: int(t) for i, t in enumerate(f.readline().split(",")) if t != "x"}
+    raw_conditions = enumerate(f.readline().split(","))
+
+conditions = {
+    int(c): int(c) - (i % int(c)) if i > 0 else 0 for i, c in raw_conditions if c != "x"
+}
 
 print(f"Conditions: {conditions}")
-conditions_stop = max(conditions) + 1
 
-t = 0
+
 while True:
     match = True
     for i in range(conditions_stop):
@@ -18,3 +21,5 @@ while True:
         print(f"Matched positions at {t}")
         break
     t += 1
+    if t % 1_000_000 == 0:
+        print(f"t = {t}")

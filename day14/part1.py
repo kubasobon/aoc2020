@@ -19,11 +19,11 @@ mem = {}
 for l in data:
     if l.startswith("mask"):
         mask = l.split(" = ")[1]
-    else:
-        mem_prefix, v = l.split(" = ")
-        v = apply_mask(mask, int(v))
-        address = int(mem_prefix.strip("me[]"))
-        mem[address] = v
+        continue
+    mem_prefix, v = l.split(" = ")
+    v = apply_mask(mask, int(v))
+    address = int(mem_prefix.strip("me[]"))
+    mem[address] = v
 
 
 print("--- memory ---")

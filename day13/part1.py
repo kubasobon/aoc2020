@@ -7,7 +7,7 @@ min_ttd = arrival + 1
 bus_id = 0
 
 for b in bus_ids:
-    ttd = arrival % b
+    ttd = b - (arrival % b)
     if ttd < min_ttd:
         min_ttd = ttd
         bus_id = b

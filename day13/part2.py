@@ -7,10 +7,10 @@ conditions = {
 }
 
 conditions = {67: 0, 7: 6, 59: 57, 61: 58}
-conditions = {1789: 0, 37: 37 - 1, 47: 47 - 2, 1889: 1889 - 3}
+# conditions = {1789: 0, 37: 37 - 1, 47: 47 - 2, 1889: 1889 - 3}
 print(f"Conditions: {conditions}")
 
-t = max(conditions)
+t = max(conditions) + 1
 jmp = 0
 for k, v in conditions.items():
     if k < t and v == 0:

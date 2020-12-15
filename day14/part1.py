@@ -4,12 +4,18 @@ import string
 def apply_mask(mask, dec):
     b = bin(dec)[2:].zfill(36)
     new_b = []
-    for i, v in enumerate(mask):
-        if v == "X":
-            new_b.append(b[i])
+    for i, v in enumerate(b):
+        if mask[i] == "X":
+            new_b.append(v)
             continue
-        new_b.append(v)
-    return int(b, 2)
+        new_b.append(mask[i])
+    return int("".join(new_b), 2)
+
+
+test_mask = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X"
+assert apply_mask(test_mask, 11) == 73
+assert apply_mask(test_mask, 101) == 101
+assert apply_mask(test_mask, 0) == 64
 
 
 with open("input.txt") as f:

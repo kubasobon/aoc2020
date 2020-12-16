@@ -28,6 +28,8 @@ turn = len(mentions.latest) + 1
 last = sn[-1]
 
 while turn <= stop:
+    if turn % 1_000_000 == 0:
+        print(f"Turn {turn}")
     n = mentions.get_next(last)
     mentions.speak(turn, n)
     # print(f"Turn {turn}: \t last: {last}, next: {n}")

@@ -23,14 +23,14 @@ start_numbers = "0,1,4,13,15,12,16"
 
 sn = [int(x) for x in start_numbers.split(",")]
 mentions = Mentions(sn)
-stop = 2020
+stop = 30_000_000
 turn = len(mentions.latest) + 1
 last = sn[-1]
 
 while turn <= stop:
     n = mentions.get_next(last)
     mentions.speak(turn, n)
-    print(f"Turn {turn}: \t last: {last}, next: {n}")
+    # print(f"Turn {turn}: \t last: {last}, next: {n}")
     last = n
     turn += 1
 

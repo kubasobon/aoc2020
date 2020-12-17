@@ -72,13 +72,20 @@ def tick(world):
     return new_world
 
 
-world = {
-    Coordinates(0, 0, 0): 1,
-    Coordinates(1, 0, 0): 1,
-    Coordinates(2, 0, 0): 1,
-    Coordinates(2, 1, 0): 1,
-    Coordinates(1, 2, 0): 1,
-}
+# world = {
+#     Coordinates(0, 0, 0): 1,
+#     Coordinates(1, 0, 0): 1,
+#     Coordinates(2, 0, 0): 1,
+#     Coordinates(2, 1, 0): 1,
+#     Coordinates(1, 2, 0): 1,
+# }
+world = {}
+with open("input.txt") as f:
+    for y, l in enumerate(reversed(f.readlines())):
+        for x, ch in enumerate(l):
+            if ch == "#":
+                c = Coordinates(x, y, 0)
+                world[c] = 1
 
 for t in range(6):
     print(f"Tick {t+1}...")

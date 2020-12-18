@@ -1,22 +1,13 @@
 import string
 
-def splitd(s, sep, maxsplit=-1):
-    """splitd splits the string but keeps delimiters"""
-    out = []
-    for token in s.split(sep, maxsplit):
-        out.append(token)
-        out.append(sep)
-    return out[:-1]
-
 
 def add(a, b):
     return a + b
 
+
 def mul(a, b):
     return a * b
 
-
-data = "3 * 4 * 2 * 5 * (3 + 4 * (6 + 3 + 2 + 8 + 4) + 5 * 7)"
 
 def execute(equation_tokens):
     acc = None
@@ -36,20 +27,20 @@ def execute(equation_tokens):
             continue
         elif token.startswith("("):
             # find closing brace
-            level = 0
-            for j in range(i+1, len(equation_tokens)):
-                if equation_tokens[j].startswith("("):
-                    level += 1
-                elif equation_tokens[j].endswith(")"):
-                    if level > 0:
-                        level -= 1
-                    else:
+            level = token.count("(")
+            for j in range(i + 1, len(equation_tokens)):
+                subtoken = equation_tokens[j]
+                if subtoken.startswith("("):
+                    level += subtoken.count("(")
+                elif subtoken.endswith(")"):
+                    level -= subtoken.count(")")
+                    if level == 0:
                         break
             else:
                 raise Exception("No closing brace")
             # extract sub-equation tokens
             sub_equation = [token[1:]]
-            sub_equation.extend(equation_tokens[i+1:j])
+            sub_equation.extend(equation_tokens[i + 1 : j])
             sub_equation.append(equation_tokens[j][:-1])
             token = str(execute(sub_equation))
             i = j
@@ -68,5 +59,9 @@ def execute(equation_tokens):
     assert operator is None
     return acc
 
-print(execute(data.split()))
 
+with open("input.txt") as f:
+    data = [l.strip(string.whitespace) for l in f]
+
+total = sum(execute(eq.split()) for eq in data)
+print(f"Result: {total}")
